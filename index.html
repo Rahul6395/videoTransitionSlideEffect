@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #4793AF
+        }
+
+        .videoMainCon {
+            width: 550px;
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .videoMainCon video {
+            height: 370px;
+            width: 550px;
+            object-fit: cover;
+            border-radius: 30px
+        }
+
+        #videoOne {
+            transform: translateX(300px);
+            transition: all 1s;
+        }
+
+        /* #videoOne:hover{
+            transform: translateX(0px); 
+            transition: 1s;
+        } */
+        #videoTwo {
+            z-index: 2;
+            transform: translateX(-40px);
+            transition: all 1s;
+        }
+
+        #videoThree {
+            z-index: 3;
+            transition: all 1s;
+            transform: translateX(-380px);
+        }
+
+        .videoTag {
+            border-radius: 30px;
+            z-index: -100;
+        }
+
+        .One::before {
+            content: "";
+            width: 550px;
+            height: 370px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('https://media.istockphoto.com/id/171320852/photo/young-female-office-worker.webp?b=1&s=170667a&w=0&k=20&c=-cCS_wuQHuUe1bixGAY_y-n7LwGnRWNLrASr-Xukda0=');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            border-radius: 30px;
+        }
+
+        .Two::before {
+            content: "";
+            width: 550px;
+            height: 370px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('https://images.unsplash.com/photo-1499377193864-82682aefed04?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dGltZXJ8ZW58MHx8MHx8fDA%3D');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            border-radius: 30px;
+        }
+
+        .Three::before {
+            content: "";
+            width: 550px;
+            height: 370px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('https://images.unsplash.com/photo-1507307080003-b453948f5528?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bWFuJTIwb2ZmaWNlfGVufDB8fDB8fHww');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            border-radius: 30px;
+        }
+
+        #playIconConOne,
+        #playIconConTwo,
+        #playIconConThree {
+            position: absolute;
+            top: 44%;
+            left: 46%;
+            z-index: 11;
+            transition: all 0.5s;
+        }
+
+        .fa-circle-play {
+            font-size: 50px;
+            color: rgb(255, 255, 255)
+        }
+
+        #videoNoTextOne,
+        #videoNoTextTwo,
+        #videoNoTextThree {
+            white-space: nowrap;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: -4%;
+            z-index: 11;
+            transform: rotate(-90deg);
+            transition: all 1s;
+        }
+
+        /* .videoMainCon:hover .videoNoText{
+          white-space: nowrap;
+            color:white;
+            position:absolute;
+            top:50%;
+            left: -5%;
+            z-index: 11;
+            transform: rotate(268deg);
+            transform: translate(650px);
+            transition: 1s;
+        }
+       .videoMainCon:hover .playIconCon{
+        position:absolute;
+            top:44%;
+            left: 180%;
+            z-index: 11;
+            transform: translateX(400px);
+            transition: 2s;
+       } */
+        .removeOne:hover::before {
+            position: absolute;
+            content: "";
+            width: 550px;
+            height: 370px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('https://media.istockphoto.com/id/171320852/photo/young-female-office-worker.webp?b=1&s=170667a&w=0&k=20&c=-cCS_wuQHuUe1bixGAY_y-n7LwGnRWNLrASr-Xukda0=');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            border-radius: 30px;
+            transform: translateX(550px);
+            transition: all 0.5s;
+
+        }
+
+        .removeTwo:hover::before {
+            position: absolute;
+            content: "";
+            width: 550px;
+            height: 370px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('https://media.istockphoto.com/id/171320852/photo/young-female-office-worker.webp?b=1&s=170667a&w=0&k=20&c=-cCS_wuQHuUe1bixGAY_y-n7LwGnRWNLrASr-Xukda0=');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            border-radius: 30px;
+            transform: translateX(550px);
+            transition: all 0.5s;
+
+        }
+
+        .removeThree:hover::before {
+            position: absolute;
+            content: "";
+            width: 550px;
+            height: 370px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('https://media.istockphoto.com/id/171320852/photo/young-female-office-worker.webp?b=1&s=170667a&w=0&k=20&c=-cCS_wuQHuUe1bixGAY_y-n7LwGnRWNLrASr-Xukda0=');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            border-radius: 30px;
+            transform: translateX(550px);
+            transition: all 0.5s;
+
+        }
+
+        .titleOne, .titleTwo, .titleThree {
+            display: none;
+        }
+        #videoOne:hover .titleOne{
+            position: absolute;
+            top: 18px;
+            left: 22px;
+            font-size: 20px;
+            color: #ffff;
+            font-weight: 500;
+            display: block;
+            z-index: 0;
+        }
+        #videoTwo:hover .titleTwo{
+            position: absolute;
+            top: 18px;
+            left: 22px;
+            font-size: 20px;
+            color: #ffff;
+            font-weight: 500;
+            display: block;
+        }
+        #videoThree:hover .titleThree{
+            position: absolute;
+            top: 18px;
+            left: 22px;
+            font-size: 20px;
+            color: #ffff;
+            font-weight: 500;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="videoMainCon One" id="videoOne">
+        <div class="playIconCon" id="playIconConOne">
+            <i class="fa-solid fa-circle-play"></i>
+        </div>
+        <h1 class="videoNoText" id="videoNoTextOne">Video One</h1>
+        <video width="550px" controls
+            poster="https://images.adsttc.com/media/images/5d44/14fa/284d/d1fd/3a00/003d/large_jpg/eiffel-tower-in-paris-151-medium.jpg?1564742900"
+            class="videoTag " id="videoParis">
+            <source src="./paris.mp4" type="video/mp4">
+        </video>
+        <p class="titleOne">Paris, France🇫🇷 - Paris Spring 2024 - 4K HDR Walking Tour </p>
+    </div>
+    <div class="videoMainCon Two" id="videoTwo">
+        <div class="playIconCon" id="playIconConTwo">
+            <i class="fa-solid fa-circle-play"></i>
+        </div>
+        <h1 class="videoNoText" id="videoNoTextTwo">Video Two</h1>
+
+        <video width="550px" controls
+            poster="https://images.pexels.com/photos/714701/pexels-photo-714701.jpeg?auto=compress&cs=tinysrgb&w=600"
+            class="videoTag ">
+            <source src="./timer.mp4" type="video/mp4" id="videoCounDown">
+        </video>
+        <p class="titleTwo">Flame countdown fire based</p>
+    </div>
+    <div class="videoMainCon Three" id="videoThree">
+        <div class="playIconCon" id="playIconConThree">
+            <i class="fa-solid fa-circle-play"></i>
+        </div>
+        <h1 class="videoNoText" id="videoNoTextThree">Video Three</h1>
+        <!-- <iframe width="550" height="370" src="https://www.youtube.com/embed/zyz7gTHbX7k?si=NGQU8cmALN1DXNLZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="videoTag " id="videoBaby" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+        <video width="550px" controls
+            poster="https://images.pexels.com/photos/1549974/pexels-photo-1549974.jpeg?auto=compress&cs=tinysrgb&w=600"
+            class="videoTag ">
+            <source src="./child.mp4" type="video/mp4" id="videoBaby">
+        </video>
+        <p class="titleThree">Baby Alive Official 🧷 Baby Lemon's Diaper Changing Routine 🧷</p>
+    </div>
+    <script>
+        let videoOneCon = document.getElementById('videoOne');
+        let videoTwoCon = document.getElementById('videoTwo');
+        let videoThreeCon = document.getElementById('videoThree');
+
+        videoOneCon.addEventListener("click", function () {
+            document.getElementById("playIconConOne").style.display = "none"
+            document.getElementById("playIconConTwo").style.display = "none"
+            document.getElementById("playIconConThree").style.display = "none"
+            document.getElementById('videoNoTextOne').style.display = "none"
+            document.getElementById('videoNoTextTwo').style.transform = "rotate(-90deg)"
+            document.getElementById('videoNoTextTwo').style.left = "24%"
+            document.getElementById('videoNoTextOne').style.left = "-4%"
+            document.getElementById('videoNoTextTwo').style.display = "block"
+            document.getElementById('videoNoTextThree').style.transform = "rotate(-90deg)"
+            document.getElementById('videoNoTextThree').style.left = "26%"
+            document.getElementById('videoNoTextThree').style.display = "block"
+
+            document.getElementById("videoOne").style.transition = "all 1s "
+            document.getElementById("videoOne").style.zIndex = "3"
+            document.getElementById("videoTwo").style.zIndex = "2"
+            document.getElementById("videoThree").style.zIndex = "1"
+
+            document.getElementById("videoOne").style.width = "550px"
+            document.getElementById("videoTwo").style.width = "200px"
+            document.getElementById("videoThree").style.width = "200px"
+            document.getElementById("videoOne").style.transform = "translateX(100px)"
+            document.getElementById("videoTwo").style.transform = "translateX(30px)"
+            document.getElementById("videoThree").style.transform = "translateX(-50px)"
+
+            document.getElementById("videoOne").classList.add("removeOne");
+            document.getElementById("videoTwo").classList.add("Two");
+            document.getElementById("videoThree").classList.add("Three");
+            document.getElementById("videoOne").classList.remove("One");
+            document.getElementById("videoTwo").classList.remove("removeTwo");
+            document.getElementById("videoThree").classList.remove("removeThree");
+
+            //document.getElementById("videoParis").play();
+            document.getElementById("videoCounDown").pause();
+            document.getElementById("videoBaby").pause();
+
+        })
+
+        videoTwoCon.addEventListener("click", function () {
+            document.getElementById("playIconConOne").style.display = "none"
+            document.getElementById("playIconConTwo").style.display = "none"
+            document.getElementById("playIconConThree").style.display = "none"
+            document.getElementById('videoNoTextOne').style.transform = "rotate(-90deg)"
+            document.getElementById('videoNoTextTwo').style.display = "none"
+            document.getElementById('videoNoTextOne').style.display = "block"
+            document.getElementById('videoNoTextOne').style.left = "-4%"
+            document.getElementById('videoNoTextThree').style.transform = "rotate(-90deg)"
+            document.getElementById('videoNoTextThree').style.left = "26%"
+            document.getElementById('videoNoTextThree').style.display = "block"
+
+
+
+            document.getElementById("videoTwo").style.transition = "all 1s "
+            document.getElementById("videoOne").style.zIndex = "2"
+            document.getElementById("videoTwo").style.zIndex = "3"
+            document.getElementById("videoThree").style.zIndex = "2"
+
+            document.getElementById("videoOne").style.width = "200px"
+            document.getElementById("videoTwo").style.width = "550px"
+            document.getElementById("videoThree").style.width = "200px"
+            document.getElementById("videoOne").style.transform = "translateX(100px)"
+            document.getElementById("videoTwo").style.transform = "translateX(20px)"
+            document.getElementById("videoThree").style.transform = "translateX(-50px)"
+
+            document.getElementById("videoOne").classList.add("One");
+            document.getElementById("videoTwo").classList.add("removeTwo");
+            document.getElementById("videoThree").classList.add("Three");
+            document.getElementById("videoOne").classList.remove("removeOne");
+            document.getElementById("videoTwo").classList.remove("Two");
+            document.getElementById("videoThree").classList.remove("removeThree");
+
+            document.getElementById("videoParis").pause();
+            //document.getElementById("videoCounDown").play();
+            document.getElementById("videoBaby").pause();
+
+        })
+
+
+
+        videoThreeCon.addEventListener("click", function () {
+            document.getElementById("playIconConOne").style.display = "none"
+            document.getElementById("playIconConTwo").style.display = "none"
+            document.getElementById("playIconConThree").style.display = "none"
+            document.getElementById('videoNoTextOne').style.transform = "rotate(-90deg)"
+            document.getElementById('videoNoTextTwo').style.display = "block"
+            document.getElementById('videoNoTextOne').style.display = "block"
+            document.getElementById('videoNoTextTwo').style.left = "-7%"
+            document.getElementById('videoNoTextOne').style.left = "-4%"
+            document.getElementById('videoNoTextThree').style.transform = "rotate(-90deg)"
+            document.getElementById('videoNoTextThree').style.left = "26%"
+            document.getElementById('videoNoTextThree').style.display = "none"
+
+
+            document.getElementById("videoThree").style.transition = "all 1s "
+            document.getElementById("videoOne").style.zIndex = "1"
+            document.getElementById("videoTwo").style.zIndex = "2"
+            document.getElementById("videoThree").style.zIndex = "3"
+
+            document.getElementById("videoOne").style.width = "200px"
+            document.getElementById("videoTwo").style.width = "200px"
+            document.getElementById("videoThree").style.width = "550px"
+            document.getElementById("videoOne").style.transform = "translateX(100px)"
+            document.getElementById("videoTwo").style.transform = "translateX(20px)"
+            document.getElementById("videoThree").style.transform = "translateX(-65px)"
+
+            document.getElementById("videoOne").classList.add("One");
+            document.getElementById("videoTwo").classList.add("Two");
+            document.getElementById("videoThree").classList.add("removeThree");
+            document.getElementById("videoOne").classList.remove("removeOne");
+            document.getElementById("videoTwo").classList.remove("removeTwo");
+            document.getElementById("videoThree").classList.remove("Three");
+
+            document.getElementById("videoParis").pause();
+            document.getElementById("videoCounDown").pause();
+            //document.getElementById("videoBaby").play();
+        })
+
+    </script>
+</body>
+
+</html>
